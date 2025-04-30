@@ -1,5 +1,7 @@
 package com.devsuperior.dscommerce.dto;
 
+import java.util.Objects;
+
 import com.devsuperior.dscommerce.entities.Product;
 
 public class ProductDTO {
@@ -11,13 +13,8 @@ public class ProductDTO {
 		private Double price;
 	private String imgUrl;
 
+	public ProductDTO() {};
 	
-	public ProductDTO(){
-		
-	}
-
-	
-
 	public ProductDTO(Long id, String name, String description, Double price, String imgUrl) {
 		super();
 		this.id = id;
@@ -38,14 +35,6 @@ public class ProductDTO {
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-
 	public Long getId() {
 		return id;
 	}
@@ -68,6 +57,23 @@ public class ProductDTO {
 
 	public String getImgUrl() {
 		return imgUrl;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ProductDTO other = (ProductDTO) obj;
+		return Objects.equals(id, other.id);
 	}
 	
 
